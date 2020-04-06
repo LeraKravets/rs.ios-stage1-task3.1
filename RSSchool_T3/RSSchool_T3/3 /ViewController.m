@@ -8,7 +8,6 @@
     [super viewDidLoad];
 
     self.mainView = [[UIView alloc] initWithFrame:CGRectMake(120.0, 40.0, 100.0, 20.0)];
-//    self.mainView.backgroundColor = [UIColor grayColor];
     self.mainView.accessibilityIdentifier = @"mainView";
 
     [self.view addSubview: self.mainView];
@@ -45,10 +44,13 @@
     // Additing textFields
     self.textFieldRed = [[UITextField alloc] initWithFrame: CGRectMake(120.0, 80.0, 100.0, 20.0)];
     self.textFieldRed.placeholder = @"0..255";
+    self.textFieldRed.delegate = self;
     self.textFieldGreen = [[UITextField alloc] initWithFrame: CGRectMake(120.0, 120.0, 100.0, 20.0)];
     self.textFieldGreen.placeholder = @"0..255";
+    self.textFieldGreen.delegate = self;
     self.textFieldBlue = [[UITextField alloc] initWithFrame: CGRectMake(120.0, 160.0, 100.0, 20.0)];
     self.textFieldBlue.placeholder = @"0..255";
+    self.textFieldBlue.delegate = self;
 
     self.textFieldRed.accessibilityIdentifier = @"textFieldRed";
     self.textFieldGreen.accessibilityIdentifier = @"textFieldGreen";
@@ -83,6 +85,10 @@
         self.textFieldBlue.text = @"";
     }
 
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.labelResultColor.text = @"Color";
 }
 
 @end
